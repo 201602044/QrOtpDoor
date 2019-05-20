@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "310248366113",
+    "firebase_url": "https://qrcodeotpdoor.firebaseio.com",
+    "project_id": "qrcodeotpdoor",
+    "storage_bucket": "qrcodeotpdoor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310248366113:android:2cb0e6da14d6ad4a",
+        "android_client_info": {
+          "package_name": "basicapplication1.qrcodeotpdoor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310248366113-p9v32egag7vn1r8pchbe57kc7manlbtg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "basicapplication1.qrcodeotpdoor_app",
+            "certificate_hash": "f99b6048464942dd60f8e7444c98933327e31667"
+          }
+        },
+        {
+          "client_id": "310248366113-5k4oasda9mc5b15oga6sn25qgf6vsps4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC824bBvfhLri01kWymaCI3y_WFMWtcM9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310248366113-5k4oasda9mc5b15oga6sn25qgf6vsps4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

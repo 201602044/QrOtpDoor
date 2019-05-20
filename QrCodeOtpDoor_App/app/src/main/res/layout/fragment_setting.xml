@@ -4,5 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/setting_old_passswd"
+        android:hint="이전 비밀번호"
+        />
+   <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/setting_new_passwd"
+       android:hint="새로운 비밀번호 "/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/setting_change_passwd"
+        android:onClick="onClcik"
+        android:text="비밀번호 변경"/>
+    <!--위에까지가 비밀번호 변경에 관련된 내용이다.-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/setting_new_name"
+        android:hint="바꿀 이름"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/setting_new_phone_number"
+        android:hint="바꿀  전화번호"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/setting_change_user_info"/>
+    <!--위에 까지가 전화번호/이름 변경에 관련된 내용 -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClcik"
+        android:id="@+id/setting_delete_user_info"/>
 </LinearLayout>

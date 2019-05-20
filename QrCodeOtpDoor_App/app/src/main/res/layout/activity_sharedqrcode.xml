@@ -4,5 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/shareduser_name"
+        android:hint="공유받을  사용자 이름"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shareduser_phonenumeber"
+        android:hint="공유받을 사용자 번호"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shareuser_submit"
+        android:onClick="onClcik"
+        android:text="제출"/>
 
 </LinearLayout>

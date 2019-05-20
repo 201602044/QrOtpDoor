@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--차례대로 QR코드이미지
+QR코드 발급
+공유하기
+위치확인  -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/management_door_key_image"
+    />
+    <!--default image 필요 -->
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/management_request_key"
+        android:text="발급받기"
+        android:layout_gravity="center"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/management_to_share"
+        android:onClick="onClick"
+        android:text="공유하기"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/management_to_location"
+        android:text="위치확인"
+        android:layout_gravity="center"
+        android:onClick="onClick"
+        />
+<!--    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/management_request_key"
+        android:text="발급받기"
+        android:layout_gravity="center"
+        />-->
 </LinearLayout>

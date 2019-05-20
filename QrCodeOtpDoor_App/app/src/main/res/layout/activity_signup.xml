@@ -4,5 +4,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="인증번호 입력"
+        android:id="@+id/signup_inputMsg"
+        android:maxLines="1"
+        android:maxLength="30"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_receiveMsg"
+        android:onClick="onClick"
+        android:text="번호받기"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인하기"
+        android:id="@+id/signup_checkMsg"/>
+
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/signup_user_id"
+        android:hint="아이디를 입력하시오"
+        android:maxLines="1"
+        android:maxLength="50"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_user_passwd"
+        android:hint="비밀번호를 입력하시오"
+        android:password="true"
+        android:maxLines="1"
+        android:maxLength="50"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_user_re_passwd"
+        android:password="true"
+        android:hint="비밀번호 재입력 "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_user_name"
+        android:hint="이름를 입력하시오"
+        android:maxLines="1"
+        android:maxLength="50"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_user_phonenumber"
+        android:hint="번호를 입력하시오"
+        android:inputType="number"
+        android:maxLines="1"
+        android:maxLength="50"/>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/signup_addUser"
+    android:onClick="onClick"
+    android:clickable="false"
+    android:text="입력한 정보를 회원가입"/>
 
 </LinearLayout>
