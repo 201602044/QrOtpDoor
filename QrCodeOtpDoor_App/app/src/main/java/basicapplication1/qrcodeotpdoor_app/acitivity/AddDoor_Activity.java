@@ -49,6 +49,7 @@ public class AddDoor_Activity  extends AppCompatActivity {
             doorUserRelation_vo.setDoor_name(editTexts[1].getText().toString());
             String[] params={"addDoorUser",gson.toJson(doorUserRelation_vo)};
             String result=okHttp.execute(params).get();
+            okHttp.cancel(true);
             if(!result.equals("success")) throw  new Exception();
             Toast.makeText(getApplicationContext(),"도어락을 등록하였습니다.",Toast.LENGTH_LONG).show();
             Intent intent=new Intent(this, Main_Activity.class);

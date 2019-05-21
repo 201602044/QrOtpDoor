@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_change_passwd"
-        android:onClick="onClcik"
         android:text="비밀번호 변경"/>
     <!--위에까지가 비밀번호 변경에 관련된 내용이다.-->
     <EditText
@@ -35,12 +34,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:id="@+id/setting_change_user_info"/>
+        android:id="@+id/setting_change_user_info"
+        android:text="유저 정보 변경"/>
     <!--위에 까지가 전화번호/이름 변경에 관련된 내용 -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClcik"
-        android:id="@+id/setting_delete_user_info"/>
+        android:id="@+id/setting_delete_user_info"
+        android:text="회원탈퇴"/>
 </LinearLayout>

@@ -28,9 +28,7 @@ public class Location_Activity   extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-        Intent intent=getIntent();
 
-        door_id=intent.getStringExtra("door_id");
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager
                 .findFragmentById(R.id.map);
@@ -42,19 +40,23 @@ public class Location_Activity   extends AppCompatActivity implements OnMapReady
         LatLng location= new LatLng(37.56, 126.97);
         //37.56, 126.97 이게 default 서울값
         try{
+            Intent intent=getIntent();
+            door_id=intent.getStringExtra("door_id");
             OkHttp okHttp=new OkHttp();
             Gson gson=new Gson();
             Door_VO door_vo=new Door_VO();
             door_vo.setDoor_id(door_id);
             String json=gson.toJson(door_vo);
+            Toast.makeText(getApplicationContext(),door_id,Toast.LENGTH_LONG).show();
             String[] params={"getDoorLocation",json};
             String result=okHttp.execute(params).get();
+            okHttp.cancel(true);
             door_vo=gson.fromJson(result,Door_VO.class);
             door_longitude=door_vo.getDoor_longitude();
             door_langtitude=door_vo.getDoor_latitude();
-            location= new LatLng( Integer.parseInt(door_longitude),Integer.parseInt(door_langtitude));
+            location= new LatLng( Double.parseDouble(door_longitude),Double.parseDouble(door_langtitude));
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"값을 불러오지 못했습니다.",Toast.LENGTH_LONG).show();
+
             e.printStackTrace();
         }
 

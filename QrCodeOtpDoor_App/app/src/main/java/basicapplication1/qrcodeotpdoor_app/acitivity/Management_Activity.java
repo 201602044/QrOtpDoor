@@ -1,5 +1,6 @@
 package basicapplication1.qrcodeotpdoor_app.acitivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -13,12 +14,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
+import androidmads.library.qrgenearator.QRGSaver;
 import basicapplication1.qrcodeotpdoor_app.R;
 import basicapplication1.qrcodeotpdoor_app.component.asynctask.OkHttp;
 import basicapplication1.qrcodeotpdoor_app.component.item.DoorUserRelation_VO;
+import basicapplication1.qrcodeotpdoor_app.exception.NotSavedQrCodeException;
 
 /**
  * Created by LeeSeungJae_201602044  on 2019-05-14.
@@ -36,9 +43,10 @@ public class Management_Activity  extends AppCompatActivity {
         setContentView(R.layout.activity_management);
         intent=getIntent();
         door_id=intent.getStringExtra("door_id");
-
+        imageView=(ImageView) findViewById(R.id.management_door_key_image);
+        tedPermission();
     }
-    public  void  onClcik(View v){
+    public  void  onClick(View v){
         switch (v.getId()){
             case R.id.management_request_key:
                 requestKey();
@@ -54,9 +62,13 @@ public class Management_Activity  extends AppCompatActivity {
     }
 
     private void shareKey() {
+        if(bitmap==null) {
+            Toast.makeText(getApplicationContext(),"공유할 QR코드가 없습니다.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
         intent=new Intent(this,SharedQrCode_Activity.class);
         intent.putExtra("door_id",door_id);
-        intent.putExtra("door_key",bitmap);
         startActivity(intent);
     }
 
@@ -77,6 +89,7 @@ public class Management_Activity  extends AppCompatActivity {
             String[] params={"requestKey",gson.toJson(doorUserRelation_vo)};
             OkHttp okHttp=new OkHttp();
             result=okHttp.execute(params).get();
+            okHttp.cancel(true);
             doorUserRelation_vo=gson.fromJson(result,DoorUserRelation_VO.class);
             //key를 받아옴
             WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -97,14 +110,22 @@ public class Management_Activity  extends AppCompatActivity {
             bitmap = qrgEncoder.encodeAsBitmap();
             imageView.setImageBitmap(bitmap);
             //이미지 생성
-           /* boolean save = QRGSaver.save(savePath, door_id, bitmap, QRGContents.ImageType.IMAGE_JPEG);
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-            if(!save) throw  new NotSavedQrCodeException();*/
+        /*    File dir  =new File(savePath);
+            //상위 디렉토리가 존재하지 않을 경우 생성
+            if (!dir.exists()) {
+
+                dir.mkdirs();
+
+            }*/
+
+
+            boolean save = QRGSaver.save(savePath, door_id, bitmap, QRGContents.ImageType.IMAGE_JPEG);
+            if(!save) throw  new NotSavedQrCodeException();
         }
-/*        catch (NotSavedQrCodeException e){
+        catch (NotSavedQrCodeException e){
             Toast.makeText(getApplicationContext(),"QR코드를 저장하지 못했습니다.",Toast.LENGTH_LONG).show();
             e.printStackTrace();
-        }*/
+        }
         catch (Exception e){
             Toast.makeText(getApplicationContext(),"QR코드를 발급받지 못했습니다.",Toast.LENGTH_LONG).show();
             e.printStackTrace();
@@ -112,6 +133,26 @@ public class Management_Activity  extends AppCompatActivity {
 
 
 
+    }
+    private void tedPermission() {
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                // 권한 요청 성공
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                // 권한 요청 실패
+            }
+        };
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .check();
     }
 }
 

@@ -10,7 +10,7 @@ QR코드 발급
     android:orientation="vertical">
 <ImageView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:id="@+id/management_door_key_image"
     />
     <!--default image 필요 -->
@@ -20,6 +20,7 @@ QR코드 발급
         android:layout_height="wrap_content"
         android:id="@+id/management_request_key"
         android:text="발급받기"
+        android:onClick="onClick"
         android:layout_gravity="center"/>
     <Button
         android:layout_width="match_parent"

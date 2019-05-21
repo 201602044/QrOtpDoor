@@ -1,6 +1,7 @@
 package basicapplication1.qrcodeotpdoor_app.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,7 @@ public class Message_Fragment  extends Fragment {
     ListView listView;
     MessageList_Adapter messageList_adapter;
     Intent intent;
+    Context mContext;
     public Message_Fragment(){
 
     }
@@ -36,6 +38,7 @@ public class Message_Fragment  extends Fragment {
         args.putInt(ARG_PAGE, page);
         //PageFragment fragment1 = new PageFragment(page ,name_Str, location_Str, state, PhoneNum);
         this.setArguments(args);
+
     }
 
 
@@ -44,22 +47,21 @@ public class Message_Fragment  extends Fragment {
     {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        listView= (ListView) getView().findViewById(R.id.message_listview);
-        loadMsgList();
+
     }
 
     private void loadMsgList() {
         try{
+            messageList_adapter=new MessageList_Adapter();
             Gson gson=new Gson();
             OkHttp okHttp=new OkHttp();
             String[] params ={"getDoorUserInfo", Login_Activity.user_id};
             String result=okHttp.execute(params).get();
             Message_VO[] message_vos=gson.fromJson(result,Message_VO[].class);
-
+            okHttp.cancel(true);
             listView.setAdapter(messageList_adapter);
             for(Message_VO  message_vo:message_vos){
                 messageList_adapter.addItem(message_vo);
-
             }
 
         }catch (Exception e){
@@ -74,6 +76,16 @@ public class Message_Fragment  extends Fragment {
         if (mPage == 1) {
             view = inflater.inflate(R.layout.fragment_message, container, false);//fragment_page
         }
+        listView= (ListView) view.findViewById(R.id.message_listview);
+        loadMsgList();
         return view;
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        mContext=context;
+
+
     }
 }

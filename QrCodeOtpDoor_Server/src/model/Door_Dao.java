@@ -66,7 +66,7 @@ public class Door_Dao  extends ConnectionDB{
 					pstmt.setString(1, door_vo.getDoor_id());
 					rs=pstmt.executeQuery();
 					if(rs.next()) {
-						door_vo.setDoor_latitude(rs.getString("door_langtitude"));
+						door_vo.setDoor_latitude(rs.getString("door_latitude"));
 						door_vo.setDoor_longitude(rs.getString("door_longitude"));
 						temp=gson.toJson(door_vo);
 					}
