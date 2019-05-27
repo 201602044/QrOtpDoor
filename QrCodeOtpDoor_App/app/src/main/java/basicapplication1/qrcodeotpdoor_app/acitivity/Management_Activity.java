@@ -121,8 +121,8 @@ public class Management_Activity  extends AppCompatActivity {
             if(!SaveBitmapToFileCache(bitmap,savePath,door_name)) throw new NotSavedQrCodeException();
         }
         catch (NotSavedQrCodeException e){
-            e.printStackTrace();
             Toast.makeText(getApplicationContext(),"QR코드를 저장하지 못했습니다.",Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
         catch (Exception e){
             Toast.makeText(getApplicationContext(),"QR코드를 발급받지 못했습니다.",Toast.LENGTH_LONG).show();
@@ -229,7 +229,7 @@ public class Management_Activity  extends AppCompatActivity {
     protected void Update() {
         Runnable updater = new Runnable() {
             public void run() {
-                timer_text.setText(String.format("%02d",timer_sec/60)+":"+String.format("%02d",timer_sec%60)+"초"); //텍스트쓰레드
+//                timer_text.setText(String.format("%02d",timer_sec/60)+":"+String.format("%02d",timer_sec%60)+"초"); //텍스트쓰레드
                 progressBar.setProgress(timer_sec);
                 if(timer_sec==0) timer.cancel();
             }

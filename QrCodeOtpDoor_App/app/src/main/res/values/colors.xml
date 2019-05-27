@@ -3,13 +3,17 @@
     <color name="colorPrimary">#2ED7D2</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#2ED7D2</color>
-
+<!--
+    <color name="background_color">#ffffff</color>
+    <color name="button_color">#9EDDD0</color>
+    <color name="line_color">#999999</color>
+    <color name="edittext_color">#EBE5E4</color>
+    <color name="floagting_button_color">#2ED7D2</color>-->
     <color name="background_color">#D3F3ED</color>
     <color name="button_color">#9EDDD0</color>
     <color name="line_color">#999999</color>
     <color name="edittext_color">#EBE5E4</color>
-
-
+    <color name="floagting_button_color">#ffffff</color>
 
     <color name="red">#FF0000</color>
     <color name="background_color2"> #B8F3B8</color>

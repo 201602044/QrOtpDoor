@@ -168,7 +168,8 @@
         android:id="@+id/setting_delete_user_info"
         android:text="회원탈퇴"
         android:background="@color/button_color"
-        android:drawableLeft="@drawable/ic_delete_white_18dp"/>
+        android:drawableLeft="@drawable/ic_delete_white_18dp"
+        android:drawablePadding="10dp"/>
 
     </LinearLayout>
     <View

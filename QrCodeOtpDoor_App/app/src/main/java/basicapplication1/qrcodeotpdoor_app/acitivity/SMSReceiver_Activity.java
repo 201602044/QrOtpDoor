@@ -92,6 +92,7 @@ public class SMSReceiver_Activity extends Activity {
             Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다",Toast.LENGTH_LONG).show();
             return;
         }
+        timer.cancel();
         intent=new Intent(this,SignUp_Activity.class);
         startActivity(intent);
         finish();

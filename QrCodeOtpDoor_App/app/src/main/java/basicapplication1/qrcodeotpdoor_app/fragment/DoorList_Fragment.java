@@ -89,20 +89,15 @@ public class DoorList_Fragment  extends Fragment {
         if (mPage == 0) {
             view = inflater.inflate(R.layout.fragment_doorlist, container, false);//fragment_page
         }
-
         listView = (ListView) view.findViewById(R.id.doorlist_listview);
         loadDoorList();
-
         return view;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
             mContext=context;
-
-
     }
 
 }

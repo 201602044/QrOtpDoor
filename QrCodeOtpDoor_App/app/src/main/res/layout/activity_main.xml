@@ -46,7 +46,7 @@
 
             android:layout_margin="10dp"
 
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/floagting_button_color"
 
             android:src="@drawable/ic_exit_to_app_black_36dp"
 
@@ -73,7 +73,7 @@
 
             android:layout_margin="10dp"
 
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/floagting_button_color"
 
             android:src="@drawable/ic_playlist_add_black_36dp"
 

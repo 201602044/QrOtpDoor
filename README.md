@@ -16,8 +16,8 @@
 ### 개발환경
 Language: Java, Python, C++  
 OS: Android, Ubuntu 16.04(AWS),　Raspbian 4.14   
-Library and API: OpenCV,Zbar, Zxing, FCM, GMS,okhttp,Gson
-pagerslidingtapstirp,junit,ted permission
+Library and API: OpenCV,Zbar, Zxing, FCM, GMS,okhttp,Gson 
+,pagerslidingtapstirp,junit,ted permission 
 DB: MySQL, FireBase 
 Protocol: Http  
 Algorithm: CBC-BlockAlgorithm  
