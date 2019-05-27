@@ -14,10 +14,11 @@
 
 ***
 ### 개발환경
-Language: Java, Python  
+Language: Java, Python, C++  
 OS: Android, Ubuntu 16.04(AWS),　Raspbian 4.14   
-Library and API: JSON, QR-Code Generator, OpenCV, Zxing, FCM    
-DB: MySQL, SQLite, FireBase  
+Library and API: OpenCV,Zbar, Zxing, FCM, GMS,okhttp,Gson
+pagerslidingtapstirp,junit,ted permission
+DB: MySQL, FireBase 
 Protocol: Http  
 Algorithm: CBC-BlockAlgorithm  
 ***

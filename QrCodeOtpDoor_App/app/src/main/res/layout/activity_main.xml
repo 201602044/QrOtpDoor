@@ -1,20 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background_color"
     android:weightSum="10">
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/main_viewpgaer"
-        android:layout_weight="8"
-        />
     <com.astuetz.PagerSlidingTabStrip
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/main_taps"
-        android:layout_weight="2"
-        ></com.astuetz.PagerSlidingTabStrip>
+        android:layout_weight="1.2"
+        app:pstsIndicatorColor="@color/button_color"
+        app:pstsUnderlineColor="@color/button_color"
+        app:pstsDividerColor="@color/button_color"
+        >
+    </com.astuetz.PagerSlidingTabStrip>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.8">
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_viewpgaer"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|right|end">
+        <android.support.design.widget.FloatingActionButton
+
+            android:id="@+id/fab_sub1"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_above="@+id/fab_sub2"
+
+            android:layout_alignParentRight="true"
+
+            android:layout_margin="10dp"
+
+            android:backgroundTint="#ffffff"
+
+            android:src="@drawable/ic_exit_to_app_black_36dp"
+
+            android:visibility="invisible"
+
+            app:borderWidth="0dp"
+
+            app:fabSize="normal"
+            />
+
+
+
+        <android.support.design.widget.FloatingActionButton
+
+            android:id="@+id/fab_sub2"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_above="@+id/main_fab"
+
+            android:layout_alignParentRight="true"
+
+            android:layout_margin="10dp"
+
+            android:backgroundTint="#ffffff"
+
+            android:src="@drawable/ic_playlist_add_black_36dp"
+
+            android:visibility="invisible"
+
+       />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/main_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_36dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            app:backgroundTint="@color/button_color"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+        </RelativeLayout>
+    </FrameLayout>
+
+<!--#A9E2C5"-로그인 초록  #CCD1FF 배경색 #BBD1E8경계선   -->
+
+
 </LinearLayout>

@@ -3,22 +3,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-<EditText
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@color/background_color"
+    android:weightSum="10">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도어락 id 입력"/>
+    <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/adddoor_id"
-    android:hint="도어락 id 입력"/>
+        android:background="@color/edittext_color"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도어락 별명 입력"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/adddoor_name"
-        android:hint="도어락 별명 입력"/>
+        android:background="@color/edittext_color"
+        />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adddoor_scanner_button"
+        android:onClick="onClick"
+        android:text="QR코드로 스캔"
+        android:background="@color/button_color"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/adddoor_submit_button"
         android:onClick="onClick"
-        android:text="도어락 추가"/>
-
+        android:text="도어락 추가"
+        android:background="@color/button_color"
+        />
+    </LinearLayout>
 </LinearLayout>

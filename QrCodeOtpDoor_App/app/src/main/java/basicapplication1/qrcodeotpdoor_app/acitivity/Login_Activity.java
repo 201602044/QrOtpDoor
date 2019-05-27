@@ -1,5 +1,6 @@
 package basicapplication1.qrcodeotpdoor_app.acitivity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 import basicapplication1.qrcodeotpdoor_app.R;
 import basicapplication1.qrcodeotpdoor_app.component.asynctask.OkHttp;
@@ -34,6 +39,7 @@ public class Login_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        tedPermission();
         editTexts=new EditText[2];
         editTexts[0]=(EditText)findViewById(R.id.login_user_id);
         editTexts[1]=(EditText)findViewById(R.id.login_user_passwd);
@@ -129,7 +135,32 @@ public class Login_Activity extends AppCompatActivity {
     }
     //시작시 pref에서 체큽ㄱ스에 값이 저장되있다면 불러와서 만들어 주야한다.
     public  void moveSignUp(){
-        intent = new Intent(this, SignUp_Activity.class);
+        intent = new Intent(this, SMSReceiver_Activity.class);
         startActivity(intent);
+    }
+    private void tedPermission() {
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                // 권한 요청 성공
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                // 권한 요청 실패
+            }
+        };
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .setPermissions(Manifest.permission.CAMERA)
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .setPermissions(Manifest.permission.SEND_SMS)
+                .setPermissions(Manifest.permission.VIBRATE)
+                .check();
     }
 }

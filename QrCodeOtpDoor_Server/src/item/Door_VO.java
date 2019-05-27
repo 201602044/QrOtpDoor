@@ -3,6 +3,7 @@ package item;
 public class Door_VO {
 String door_id, door_latitude,door_longitude;
 
+
 public String getDoor_id() {
 	return door_id;
 }

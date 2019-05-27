@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -49,12 +50,19 @@ public class DoorList_Adapter extends BaseAdapter {
         ImageView imageView=(ImageView) convertView.findViewById(R.id.door_image);
         TextView textView=(TextView) convertView.findViewById(R.id.door_name);
 
-        //만들어야할게 전체 제목 날짜  닉네임 좋아요 싫어요 // + linearlayout의 버튼 ,
         // Data Set(listViewItemPageList)에서 position에 위치한 데이터 참조 획득
         final DoorUserRelation_VO doorUserRelation_vo =list.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        Glide.with(context).load(Environment.getExternalStorageDirectory().getPath() + "/QRCode/"+doorUserRelation_vo.getDoor_id()).into(imageView);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.ic_default_image);
+        requestOptions.error(R.drawable.ic_default_image);
+
+
+        Glide.with(context)
+                .setDefaultRequestOptions(requestOptions)
+                .load(Environment.getExternalStorageDirectory().getPath() + "/QRCode/"+doorUserRelation_vo.getDoor_name())
+                .into(imageView);
         textView.setText(doorUserRelation_vo.getDoor_name());
 
 

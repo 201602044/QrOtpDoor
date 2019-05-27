@@ -22,11 +22,12 @@ public class Door_Dao  extends ConnectionDB{
 					Gson gson=new Gson();
 					Door_VO door_vo=gson.fromJson(strings[0], Door_VO.class);
 					conn=getConnection();
-					pstmt = conn.prepareStatement("insert into door values (?,?,?)");
+					pstmt = conn.prepareStatement("insert into door values (?,?,?,?)");
 					pstmt.setString(1, door_vo.getDoor_id());
 					pstmt.setString(2, door_vo.getDoor_latitude());
 					//위도
 					pstmt.setString(3, door_vo.getDoor_longitude());
+					pstmt.setInt(4, 0);
 					pstmt.executeUpdate();
 						temp="success";
 				}catch(Exception e) {

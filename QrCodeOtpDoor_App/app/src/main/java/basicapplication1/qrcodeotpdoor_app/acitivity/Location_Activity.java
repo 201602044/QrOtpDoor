@@ -4,6 +4,8 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,9 +23,10 @@ import basicapplication1.qrcodeotpdoor_app.component.item.Door_VO;
 /**
  * Created by LeeSeungJae_201602044  on 2019-05-14.
  */
-public class Location_Activity   extends AppCompatActivity implements OnMapReadyCallback {
+public class Location_Activity   extends AppCompatActivity implements OnMapReadyCallback{
     String door_id;
     String door_langtitude,door_longitude;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,5 +71,31 @@ public class Location_Activity   extends AppCompatActivity implements OnMapReady
 
         map.moveCamera(CameraUpdateFactory.newLatLng(location));
         map.animateCamera(CameraUpdateFactory.zoomTo(10));
+    }
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                intent = new Intent(this, Main_Activity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.menu_logout:
+                intent = new Intent(this, Login_Activity.class);
+                intent.putExtra("logout", true);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.menu_before:
+                finish();
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

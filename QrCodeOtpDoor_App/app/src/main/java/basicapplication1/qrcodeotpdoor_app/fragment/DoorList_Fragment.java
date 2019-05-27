@@ -11,13 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 
 import basicapplication1.qrcodeotpdoor_app.R;
-import basicapplication1.qrcodeotpdoor_app.acitivity.AddDoor_Activity;
 import basicapplication1.qrcodeotpdoor_app.acitivity.Login_Activity;
 import basicapplication1.qrcodeotpdoor_app.acitivity.Management_Activity;
 import basicapplication1.qrcodeotpdoor_app.adapter.DoorList_Adapter;
@@ -75,6 +73,7 @@ public class DoorList_Fragment  extends Fragment {
 
                     Intent intent =new Intent(mContext,Management_Activity.class);
                     intent.putExtra("door_id", doorUserRelation_vos[i].getDoor_id());
+                    intent.putExtra("door_name",doorUserRelation_vos[i].getDoor_name());
                     startActivity(intent);
                 }
             });
@@ -93,14 +92,6 @@ public class DoorList_Fragment  extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.doorlist_listview);
         loadDoorList();
-        Button button=(Button) view.findViewById(R.id.doorlist_to_adddoor);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent=new Intent(mContext, AddDoor_Activity.class);
-                startActivity(intent);
-            }
-        });
 
         return view;
     }
@@ -113,4 +104,5 @@ public class DoorList_Fragment  extends Fragment {
 
 
     }
+
 }

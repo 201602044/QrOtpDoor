@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -18,45 +19,66 @@ import basicapplication1.qrcodeotpdoor_app.component.item.User_VO;
  */
 public class SignUp_Activity   extends AppCompatActivity {
     EditText[] editTexts;
+    LinearLayout button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        editTexts=new EditText[6];
-        editTexts[0]=(EditText) findViewById(R.id.signup_inputMsg);
-        editTexts[1]=(EditText) findViewById(R.id.signup_user_id);
-        editTexts[2]=(EditText) findViewById(R.id.signup_user_passwd);
-        editTexts[3]=(EditText) findViewById(R.id.signup_user_re_passwd);
-        editTexts[4]=(EditText) findViewById(R.id.signup_user_name);
-        editTexts[5]=(EditText) findViewById(R.id.signup_user_phonenumber);
+        editTexts=new EditText[5];
+        editTexts[0]=(EditText) findViewById(R.id.signup_user_id);
+        editTexts[1]=(EditText) findViewById(R.id.signup_user_passwd);
+        editTexts[2]=(EditText) findViewById(R.id.signup_user_re_passwd);
+        editTexts[3]=(EditText) findViewById(R.id.signup_user_name);
+        editTexts[4]=(EditText) findViewById(R.id.signup_user_phonenumber);
         //값 초기화
+      /*  button=(LinearLayout) findViewById(R.id.signup_recaptchabutton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SafetyNet.getClient(getApplicationContext()).verifyWithRecaptcha("6LeF06QUAAAAAJB61nLmFE2gs7YVkjMXa-3OqsX9")
+                        .addOnSuccessListener((Executor) getApplicationContext(),
+                                new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
+                                    @Override
+                                    public void onSuccess(SafetyNetApi.RecaptchaTokenResponse response) {
+                                        // Indicates communication with reCAPTCHA service was
+                                        // successful.
+                                        String userResponseToken = response.getTokenResult();
+                                        if (!userResponseToken.isEmpty()) {
+                                            // Validate the user response token using the
+                                            // reCAPTCHA siteverify API.
+                                        }
+                                    }
+                                })
+                        .addOnFailureListener((Executor) getApplicationContext(), new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                if (e instanceof ApiException) {
+                                    // An error occurred when communicating with the
+                                    // reCAPTCHA service. Refer to the status code to
+                                    // handle the error appropriately.
+                                    ApiException apiException = (ApiException) e;
+                                    int statusCode = apiException.getStatusCode();
+                                    Log.d("", "Error: " + CommonStatusCodes
+                                            .getStatusCodeString(statusCode));
+                                } else {
+                                    // A different, unknown type of error occurred.
+                                    Log.d("", "Error: " + e.getMessage());
+                                }
+                            }
+                        });
+            }
+        });*/
+//      리캡챠 쓸꺼면 추가해서 써야한다.
     }
     public  void  onClck(View v){
         switch (v.getId()){
             case  R.id.signup_addUser:
                 addUser();
                 break;
-            case  R.id.signup_checkMsg:
-                checkMsg();
-                break;
-            case  R.id.signup_receiveMsg:
-                receiveMsg();
-                break;
                 default:
                     break;
         }
     }
-    public void  receiveMsg(){
-    //sms 인증에 사용될 함수
-        //인증번호 받기 버튼
-    }
-    public  void checkMsg(){
-        //sms 인증에 함수
-        //인증 번호 확인 버튼
-
-//완료시 disabled->abled , abled-disabled 상태로 전환 필요
-    }
-
     public  void  addUser(){
         try {
             if(isRightForm()==false) return;
@@ -64,10 +86,10 @@ public class SignUp_Activity   extends AppCompatActivity {
             String result = null;
             OkHttp http = new OkHttp();
             User_VO user_vo = new User_VO();
-            user_vo.setUser_id(editTexts[1].getText().toString());
-            user_vo.setUser_passwd(editTexts[2].getText().toString());
-            user_vo.setUser_name(editTexts[4].getText().toString());
-            user_vo.setUser_phone_number(editTexts[5].getText().toString());
+            user_vo.setUser_id(editTexts[0].getText().toString());
+            user_vo.setUser_passwd(editTexts[1].getText().toString());
+            user_vo.setUser_name(editTexts[3].getText().toString());
+            user_vo.setUser_phone_number(editTexts[4].getText().toString());
             Gson gson = new Gson();
             String data = gson.toJson(user_vo);
             String[] params = {"addUser", data};
@@ -89,14 +111,14 @@ public class SignUp_Activity   extends AppCompatActivity {
     }
 
     private boolean isRightForm() {
-        for(int i=1 ;i<editTexts.length;i++){
+        for(int i=0 ;i<editTexts.length;i++){
             //sms 인증번호 제외 , 나중에는 확인
             if(editTexts[i].getText().toString().equals("")){
                 Toast.makeText(getApplicationContext(),"공백이 있습니다.",Toast.LENGTH_LONG).show();
                 return false;
             }
         }//공백제외
-        if(editTexts[2].getText().toString().equals(editTexts[3].getText().toString())) {
+        if(editTexts[1].getText().toString().equals(editTexts[2].getText().toString())) {
             Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
             return false;
         }

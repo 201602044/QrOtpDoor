@@ -3,22 +3,45 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background_color">
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="공유받을  사용자 이름"/>
     <EditText
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:id="@+id/shareduser_name"
-        android:hint="공유받을  사용자 이름"/>
+        android:layout_margin="15dp"
+        android:background="@color/edittext_color"
+        android:drawableLeft="@drawable/ic_account_circle_white_18pt"
+        android:drawablePadding="10dp"
+        android:hint="Phone Number"
+        android:maxLength="10"
+        />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="공유받을  사용자 번호"/>
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/shareduser_phonenumeber"
-        android:hint="공유받을 사용자 번호"/>
+        android:layout_margin="15dp"
+        android:drawableLeft="@drawable/ic_local_phone_white_18pt"
+        android:background="@color/edittext_color"
+        android:drawablePadding="10dp"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:maxLength="15"/>
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/shareuser_submit"
         android:onClick="onClick"
-        android:text="제출"/>
+        android:text="공유하기"
+        android:background="@color/button_color"/>
 
 </LinearLayout>

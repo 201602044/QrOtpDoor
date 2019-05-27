@@ -95,6 +95,10 @@ public class User_Dao extends ConnectionDB{
 			Gson gson=new Gson();
 			User_VO user_vo=gson.fromJson(strings[0], User_VO.class);
 			conn=getConnection();
+			pstmt = conn.prepareStatement("delete from dooruserrelation where user_id=?");
+			pstmt.setString(1, user_vo.getUser_id());
+			pstmt.executeUpdate();		
+//			메세지는 삭제되면안됨
 			pstmt = conn.prepareStatement("delete from user where user_id=?");
 			pstmt.setString(1, user_vo.getUser_id());
 			pstmt.executeUpdate();			

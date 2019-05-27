@@ -57,10 +57,12 @@ public class Message_Fragment  extends Fragment {
             OkHttp okHttp=new OkHttp();
             String[] params ={"getDoorUserInfo", Login_Activity.user_id};
             String result=okHttp.execute(params).get();
+
             Message_VO[] message_vos=gson.fromJson(result,Message_VO[].class);
             okHttp.cancel(true);
             listView.setAdapter(messageList_adapter);
             for(Message_VO  message_vo:message_vos){
+                if (message_vo.getTitle().equals("Warning"))
                 messageList_adapter.addItem(message_vo);
             }
 

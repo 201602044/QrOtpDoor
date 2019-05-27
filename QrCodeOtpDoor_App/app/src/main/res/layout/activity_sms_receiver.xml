@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"    android:layout_gravity="center|top"
+    android:layout_margin="30dp"
+        android:id="@+id/sms_receive_layout"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번호를 입력하세요"
+                android:textSize="20dp"
+                android:fontFamily="monospace"
+             />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:hint="Phone Number"
+                android:drawableLeft="@drawable/ic_local_phone_white_18pt"
+                android:drawablePadding="10dp"
+                android:id="@+id/sms_phone_number"
+                android:background="@color/edittext_color"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="인증번호 받기"
+            android:layout_gravity="center"
+            android:id="@+id/sms_receive_button"
+            android:onClick="onClick"
+            android:background="@color/button_color"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"    android:layout_gravity="center|top"
+        android:layout_margin="30dp"
+        android:id="@+id/sms_check_layout"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증번호 입력"
+        android:fontFamily="monospace"
+        android:textSize="20dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+
+        android:background="@color/edittext_color">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:hint="Phone Number"
+            android:drawableLeft="@drawable/ic_mail_white_18dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/sms_check_num"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/red"
+            android:id="@+id/sms_timer"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="확인하기"
+        android:layout_gravity="center"
+        android:id="@+id/sms_submit_num"
+        android:onClick="onClick"
+        android:background="@color/button_color"
+        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="번호 재발급"
+            android:id="@+id/sms_receive_re_msg"
+            android:onClick="onClick"
+            android:background="@color/button_color"/>
+</LinearLayout>
+</FrameLayout>

@@ -3,70 +3,123 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <EditText
-        android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    android:background="@color/background_color"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="인증번호 입력"
-        android:id="@+id/signup_inputMsg"
-        android:maxLines="1"
-        android:maxLength="30"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_receiveMsg"
-        android:onClick="onClick"
-        android:text="번호받기"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="확인하기"
-        android:id="@+id/signup_checkMsg"/>
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_user_id"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:background="@color/edittext_color"
+            android:drawableLeft="@drawable/ic_supervisor_account_white_18pt"
+            android:hint="ID"
+            android:drawablePadding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_user_passwd"
+            android:password="true"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:background="@color/edittext_color"
+            android:drawableLeft="@drawable/ic_lock_white_18pt"
+            android:hint="Passwd"
+            android:drawablePadding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 재입력"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_user_re_passwd"
+            android:password="true"
+            android:background="@color/edittext_color"
+            android:drawableLeft="@drawable/ic_vpn_key_white_18dp"
+            android:hint="Re_Passwd"
+            android:drawablePadding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_user_name"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:background="@color/edittext_color"
+            android:drawableLeft="@drawable/ic_account_circle_white_18pt"
+            android:hint="Name"
+            android:drawablePadding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_user_phonenumber"
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:background="@color/edittext_color"
+            android:drawableLeft="@drawable/ic_local_phone_white_18pt"
+            android:hint="Phone Number"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="15dp"/>
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/signup_recaptchabutton"
+            android:weightSum="1"
+            android:layout_marginBottom="20dp"
+            >
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_checkBox"
+                android:enabled="false"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로봇이 아닙니다."/>
 
-    <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/signup_user_id"
-        android:hint="아이디를 입력하시오"
-        android:maxLines="1"
-        android:maxLength="50"/>
+        </LinearLayout>-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_addUser"
+            android:onClick="onClick"
+            android:text="Sign Up"
+            android:background="@color/button_color"/>
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_user_passwd"
-        android:hint="비밀번호를 입력하시오"
-        android:password="true"
-        android:maxLines="1"
-        android:maxLength="50"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_user_re_passwd"
-        android:password="true"
-        android:hint="비밀번호 재입력 "/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_user_name"
-        android:hint="이름를 입력하시오"
-        android:maxLines="1"
-        android:maxLength="50"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_user_phonenumber"
-        android:hint="번호를 입력하시오"
-        android:inputType="number"
-        android:maxLines="1"
-        android:maxLength="50"/>
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/signup_addUser"
-    android:onClick="onClick"
-    android:clickable="false"
-    android:text="입력한 정보를 회원가입"/>
 
 </LinearLayout>

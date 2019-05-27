@@ -63,6 +63,7 @@ public String compareKey(String...strings) {
 	// 도어락->웹서버에서 인식할때 하는것, 틀리면 안열리고 맞으면 열림 
 	//3회이상일시 오류메세지
 	//열릴시 키 삭제 
+	//입력받을때 key와 door을 받는다.
 	String temp=null;
 	Connection conn=null;
 	PreparedStatement pstmt=null;
@@ -71,48 +72,59 @@ public String compareKey(String...strings) {
 		Gson gson=new Gson();
 		DoorUserRelation_VO doorUserRelation_VO =gson.fromJson(strings[0], DoorUserRelation_VO.class);
 		conn=getConnection();
-		pstmt = conn.prepareStatement("select door_key,door_tryNum from dooruserrelation where (door_id=? and user_id=?)");
+		String receiveKey=cbc.decrypt(doorUserRelation_VO.getDoor_key().getBytes());
+		pstmt = conn.prepareStatement("select user_id from dooruserrelation where (door_id=? and door_key=?)");
 		pstmt.setString(1, doorUserRelation_VO.getDoor_id());
-		pstmt.setString(2, doorUserRelation_VO.getUser_id());
+		pstmt.setString(2, receiveKey);
 		rs=pstmt.executeQuery();
+		Message_DAO messageDAO=new Message_DAO();
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+		Date date=new Date();
+		//복호화된 받은키
 		if(rs.next()) {
-			Message_DAO messageDAO=new Message_DAO();
-			String key=rs.getString("door_key");
-			if(key.equals(cbc.decrypt(doorUserRelation_VO.getDoor_key().getBytes()))) {
-				//인식해서 받아온 키가 서버에 저장되어있는 키하고 같다면 
-				pstmt = conn.prepareStatement("update dooruserrelation set door_key=?,door_tryNym=? where (door_id=? and user_id=?)");
+				//인식해서 받아온 키가 서버에 저장되어있는 키라면?
+				pstmt = conn.prepareStatement("update dooruserrelation set door_key=? where (door_id=? and door_key=?)");
 				pstmt.setString(1, null);
-				//키가 그대로 있으면 삭제한다.
-				pstmt.setInt(2, 0);
-				//시도횟수초기화
-				pstmt.setString(3, doorUserRelation_VO.getDoor_id());
-				pstmt.setString(4, doorUserRelation_VO.getUser_id());
+				pstmt.setString(2, doorUserRelation_VO.getDoor_id());
+				pstmt.setString(3, receiveKey);
 				pstmt.executeUpdate();
-				SimpleDateFormat format = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
-				Date date=new Date();
-				messageDAO.addMsg(doorUserRelation_VO.getDoor_id(),doorUserRelation_VO.getUser_id()+"님",format.format(date)+"출입");
+				//키가 그대로 있으면 삭제한다.
+				pstmt = conn.prepareStatement("update door set door_tryNum=? where door_id=?");
+				pstmt.setInt(1, 0);
+				pstmt.setString(2, doorUserRelation_VO.getDoor_id());
+				pstmt.executeUpdate();
+				//시도횟수 초기화
+				
+				messageDAO.addMsg(doorUserRelation_VO.getDoor_id(),rs.getString("user_id")+"님",format.format(date)+"에 출입 하였습니다.");
 				//들어온 시간을 보내줘야함 
 				temp="success";
-			}
+				return temp;
 			//맞으면 키삭제, 성공반환
-			else {
+			
+		}
+		else {
+			//도어락에 잘못된 키로 인식을 시도했으면?
+			pstmt = conn.prepareStatement("select door_tryNum from door where door_id=?");
+			pstmt.setString(1, doorUserRelation_VO.getDoor_id());
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
 				int tryNum=(rs.getInt("door_tryNum")+1);
 				//잘못된 QR코드를 인식했을때 경고 횟수를 추가한다. 3회이상이면 경고 누적 
 				if(tryNum>=3) {
-					messageDAO.pushMsg(getDoorUserId(doorUserRelation_VO.getDoor_id()),"Warning",tryNum+"회이상 잘못된 접근이 발생했습니다");
+					messageDAO.pushMsg(getDoorUserId(doorUserRelation_VO.getDoor_id()),"Warning",format.format(date)+"에 "+tryNum+"회이상 잘못된 접근이 발생했습니다");
 					//경고메세지를 보내줘야함 
 					return temp;
 				}
-				pstmt = conn.prepareStatement("update dooruserrelation set door_tryNum=? where (door_id=? and user_id=?)");
-				pstmt.setInt(1, tryNum);
-				pstmt.setString(2, doorUserRelation_VO.getDoor_id());
-				pstmt.setString(3, doorUserRelation_VO.getUser_id());
+				pstmt = conn.prepareStatement("update door set door_tryNum=door_tryNum+1 where door_id=? ");
+				pstmt.setString(1, doorUserRelation_VO.getDoor_id());
 				pstmt.executeUpdate();
 				//키가 그대로 있으면 삭제한다.
-				temp="success";
 			}
+			else throw new NotFoundedInfoException();
+			
+				
 		}
-		else throw new NotFoundedInfoException();
+		
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -130,12 +142,11 @@ public String addDoorUser(String...strings) {
 		Gson gson=new Gson();
 		DoorUserRelation_VO doorUserRelation_VO =gson.fromJson(strings[0], DoorUserRelation_VO.class);
 		conn=getConnection();
-		pstmt = conn.prepareStatement("insert into dooruserrelation values(?,?,?,?,?)");
+		pstmt = conn.prepareStatement("insert into dooruserrelation values(?,?,?,?)");
 		pstmt.setString(1, doorUserRelation_VO.getDoor_id());
 		pstmt.setString(2, doorUserRelation_VO.getUser_id());
 		pstmt.setString(3, null);
-		pstmt.setInt(4, 0);
-		pstmt.setString(5, doorUserRelation_VO.getDoor_name());
+		pstmt.setString(4, doorUserRelation_VO.getDoor_name());
 		pstmt.executeUpdate();			
 		temp="success";
 
@@ -216,7 +227,7 @@ public String getDoorUserInfo(String...strings) {
 			doorUserRelation_VO.setDoor_id(rs.getString("door_id"));
 			doorUserRelation_VO.setDoor_key(rs.getString("door_key"));
 			doorUserRelation_VO.setDoor_name(rs.getString("door_name"));
-			doorUserRelation_VO.setUser_id("user_id");
+			doorUserRelation_VO.setUser_id(rs.getString("user_id"));
 			list[i++]=doorUserRelation_VO;
 		}
 		String json=gson.toJson(list);

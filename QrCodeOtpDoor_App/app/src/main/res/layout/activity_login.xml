@@ -3,37 +3,79 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
- <EditText
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:hint="id"
-     android:id="@+id/login_user_id"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="passwd"
-        android:password="true"
-        android:id="@+id/login_user_passwd"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_check"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="자동로그인"/>
- <!--위에 자료에 관해서 Linearlayout으로 묶은 다음에, onClick="onClcick 으로 가능하고 클릭 가능하게 만들어 둬야한다. -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="로그인"
-        android:id="@+id/login_to_main"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:id="@+id/login_to_signup"
-        android:onClick="onClick"/>
+    android:orientation="horizontal"
+    android:background="@color/background_color"
+    android:weightSum="10"
+    android:gravity="center">
+   <LinearLayout
+       android:layout_width="0dp"
+       android:layout_height="match_parent"
+       android:layout_weight="7"
+       android:orientation="vertical"
+       android:gravity="center">
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="100dp"
+          android:src="@drawable/opendooricon"
+          android:layout_margin="15dp"
+          />
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="  Id"
+          android:id="@+id/login_user_id"
+          android:background="@color/edittext_color"
+          android:layout_marginBottom="15dp"
+          android:drawableLeft="@drawable/ic_supervisor_account_white_18pt"
+          android:drawablePadding="10dp"
+          />
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="  Passwd"
+          android:password="true"
+          android:id="@+id/login_user_passwd"
+          android:background="@color/edittext_color"
+          android:drawableLeft="@drawable/ic_lock_white_18pt"
+          android:drawablePadding="10dp"
+          android:layout_marginBottom="15dp"
+          />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:weightSum="1"
+          android:gravity="center"
+          android:layout_marginBottom="15dp">
+         <CheckBox
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/login_check"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="자동로그인"/>
+         <!--위에 자료에 관해서 Linearlayout으로 묶은 다음에, onClick="onClcick 으로 가능하고 클릭 가능하게 만들어 둬야한다. -->
+         <View
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             android:layout_weight="1"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="회원가입"
+             android:id="@+id/login_to_signup"
+             android:onClick="onClick"/>
+      </LinearLayout>
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Sign In"
+          android:id="@+id/login_to_main"
+          android:onClick="onClick"
+          android:background="@color/button_color"/>
+   </LinearLayout>
+
 </LinearLayout>

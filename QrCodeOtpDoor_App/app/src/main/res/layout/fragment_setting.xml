@@ -1,45 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center|top">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textSize="25dp"
+        android:text="Setting"
+        android:layout_marginTop="10dp"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_margin="10dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_expand_more_black_36dp"
+            android:text="비밀번호 변경"
+            android:textSize="25dp"
+            android:id="@+id/setting_click_change_passwd"/>
+
+    <!--밑에는 비밀번호변경에 대한뷰 필요 -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/setting_list_1"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이전 비밀번호"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_old_passswd"
-        android:hint="이전 비밀번호"
-        />
+        android:password="true"
+        android:background="@color/edittext_color"
+        android:drawableLeft="@drawable/ic_lock_white_18pt"
+        android:hint="before passwd"
+        android:drawablePadding="10dp"
+        android:maxLength="50"
+
+    />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="신규 비밀번호"
+            />
    <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/setting_new_passwd"
-       android:hint="새로운 비밀번호 "/>
+       android:background="@color/edittext_color"
+       android:password="true"
+        android:drawableLeft="@drawable/ic_vpn_key_white_18dp"
+       android:hint="new passwd"
+       android:drawablePadding="10dp"
+       android:maxLength="50"
+       />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_change_passwd"
-        android:text="비밀번호 변경"/>
+        android:text="비밀번호 변경"
+        android:background="@color/button_color"
+        android:layout_margin="10dp"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_margin="10dp"/>
     <!--위에까지가 비밀번호 변경에 관련된 내용이다.-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="닉네임 변경"
+            android:textSize="25dp"
+            android:drawableRight="@drawable/ic_expand_more_black_36dp"
+            android:id="@+id/setting_click_change_info"/>
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/setting_list_2"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="신규 이름"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_new_name"
-        android:hint="바꿀 이름"/>
+        android:background="@color/edittext_color"
+        android:drawableLeft="@drawable/ic_account_circle_white_18pt"
+        android:hint="new name"
+        android:drawablePadding="10dp"
+        android:maxLength="50"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="신규 전화번호"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_new_phone_number"
-        android:hint="바꿀  전화번호"/>
+        android:background="@color/edittext_color"
+        android:drawableLeft="@drawable/ic_local_phone_white_18pt"
+        android:hint="new phone number"
+        android:drawablePadding="10dp"
+        android:maxLength="15"
+        android:inputType="number"
+        />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setting_change_user_info"
-        android:text="유저 정보 변경"/>
+        android:background="@color/button_color"
+        android:text="유저 정보 변경"
+        android:layout_margin="10dp"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999999"
+        android:layout_margin="10dp"/>
     <!--위에 까지가 전화번호/이름 변경에 관련된 내용 -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="회원탈퇴"
+            android:textSize="25dp"
+            android:id="@+id/setting_click_delete_info"
+            android:drawableRight="@drawable/ic_expand_more_black_36dp"/>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/setting_list_3"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:id="@+id/setting_delete_user_info"
-        android:text="회원탈퇴"/>
+        android:text="회원탈퇴"
+        android:background="@color/button_color"
+        android:drawableLeft="@drawable/ic_delete_white_18dp"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_margin="10dp"/>
 </LinearLayout>
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/setting_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right|end"
+        android:src="@drawable/ic_exit_to_app_black_36dp"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:backgroundTint="@color/button_color"
+        />-->

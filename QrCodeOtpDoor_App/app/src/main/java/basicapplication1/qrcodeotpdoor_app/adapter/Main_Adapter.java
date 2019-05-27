@@ -9,6 +9,7 @@ import com.astuetz.PagerSlidingTabStrip;
 
 import basicapplication1.qrcodeotpdoor_app.R;
 import basicapplication1.qrcodeotpdoor_app.fragment.DoorList_Fragment;
+import basicapplication1.qrcodeotpdoor_app.fragment.History_Fragment;
 import basicapplication1.qrcodeotpdoor_app.fragment.Message_Fragment;
 import basicapplication1.qrcodeotpdoor_app.fragment.Setting_Fragment;
 
@@ -17,10 +18,10 @@ import basicapplication1.qrcodeotpdoor_app.fragment.Setting_Fragment;
  */
 public class Main_Adapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider  {
     //탭에 들어갈 화면들을 통합해서 각 화면에 맞는 fragment를 반환하는 Adaptor 이다 .
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 4;
     //private String tabTitles[] = new String[] { "첫번째탭", "두번째탭", "세번째탭","네번째탭" };
     //글자일떄
-    private int[] imgs = {R.drawable.ic_lock_black_36dp,R.drawable.ic_message_black_36dp, R.drawable.ic_settings_black_36dp,};
+    private int[] imgs = {R.drawable.ic_lock_black_36dp,R.drawable.ic_notifications_36pt, R.drawable.ic_history_black_36dp,R.drawable.ic_settings_black_36dp,};
     //이미지를 상속하고  싶을때
 
     //탭은 이미지로 처리를해야함
@@ -46,7 +47,11 @@ public class Main_Adapter extends FragmentPagerAdapter implements PagerSlidingTa
             return new DoorList_Fragment(position);
         } else if (position == 1) {
             return new Message_Fragment(position);
-        } else {
+        }
+        else  if (position==2){
+            return  new History_Fragment(position);
+        }
+        else {
             return new Setting_Fragment(position);
         }
     }

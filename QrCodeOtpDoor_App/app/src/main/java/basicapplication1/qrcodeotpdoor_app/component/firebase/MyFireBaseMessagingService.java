@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
@@ -49,6 +50,9 @@ public class MyFireBaseMessagingService  extends com.google.firebase.messaging.F
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 
+        Vibrator vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(1000);
+        //set 1sec vibrate!
     }
 
 
