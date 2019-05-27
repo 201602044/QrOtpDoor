@@ -89,7 +89,7 @@ public class Management_Activity  extends AppCompatActivity {
         }
 
         intent=new Intent(this,SharedQrCode_Activity.class);
-        intent.putExtra("door_name",door_id);
+        intent.putExtra("door_name",door_name);
         startActivity(intent);
     }
 

@@ -78,7 +78,7 @@ public class History_Fragment   extends Fragment {
         if (mPage == 2) {
             view = inflater.inflate(R.layout.fragment_history, container, false);//fragment_page
         }
-        listView= (ListView) view.findViewById(R.id.message_listview);
+        listView= (ListView) view.findViewById(R.id.history_listview);
         loadMsgList();
         return view;
     }

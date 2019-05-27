@@ -43,6 +43,7 @@ Bitmap bitmap;
 
         intent=getIntent();
         door_id=intent.getStringExtra("door_id");
+        door_name=intent.getStringExtra("door_name");
         bitmap=(Bitmap)intent.getParcelableExtra("door_key");
     }
     public  void onClick(View v){
