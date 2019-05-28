@@ -70,7 +70,7 @@ public class SignUp_Activity   extends AppCompatActivity {
         });*/
 //      리캡챠 쓸꺼면 추가해서 써야한다.
     }
-    public  void  onClck(View v){
+    public  void  onClick(View v){
         switch (v.getId()){
             case  R.id.signup_addUser:
                 addUser();
@@ -103,8 +103,9 @@ public class SignUp_Activity   extends AppCompatActivity {
                 finish();
                 //파베 토큰때문에 로그인창으로 보내서 로그인하게해야한다.
 
-            }
+            }else throw new Exception();
         }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"회원가입이 실패했습니다.",Toast.LENGTH_LONG).show();
                 e.printStackTrace();
         }
 
@@ -118,7 +119,7 @@ public class SignUp_Activity   extends AppCompatActivity {
                 return false;
             }
         }//공백제외
-        if(editTexts[1].getText().toString().equals(editTexts[2].getText().toString())) {
+        if(!editTexts[1].getText().toString().equals(editTexts[2].getText().toString())) {
             Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
             return false;
         }

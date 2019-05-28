@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:weightSum="10"
     android:background="@color/background_color"
-    android:gravity="center">
+    android:gravity="center|top">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -14,6 +14,22 @@
         android:orientation="vertical"
         android:paddingBottom="15dp"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textSize="20dp"
+            android:fontFamily="monospace"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color"
+            android:layout_marginBottom="30dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,7 +133,8 @@
             android:id="@+id/signup_addUser"
             android:onClick="onClick"
             android:text="Sign Up"
-            android:background="@color/button_color"/>
+            android:background="@color/button_color"
+            android:textColor="@color/button_text_color"/>
     </LinearLayout>
 
 

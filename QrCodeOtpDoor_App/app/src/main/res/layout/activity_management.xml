@@ -6,31 +6,40 @@ QR코드 발급
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|top"
-    android:layout_margin="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
     >
-<ImageView
-    android:layout_width="300dp"
-    android:layout_height="300dp"
-    android:id="@+id/management_door_key_image"
-    android:src="@drawable/ic_default_image"
-
-    />
-    <!--default image 필요 -->
-    <TextView
+    <ImageView
         android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/management_door_key_image"
+        android:src="@drawable/ic_default_image"
+
+        />
+    <!--default image 필요 -->
+<!--    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/management_timer"
-        android:textColor="@color/red"/>
-        <ProgressBar
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:max="60"
-            android:id="@+id/management_progressbar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            />
+        android:textColor="@color/red"/>-->
+    <ProgressBar
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:max="60"
+        android:id="@+id/management_progressbar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:progressTint="#00ffff"
+        />
 
 
     <Button
@@ -40,7 +49,10 @@ QR코드 발급
         android:text="발급받기"
         android:onClick="onClick"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_vpn_key_white_18dp"/>
+        android:drawableLeft="@drawable/ic_vpn_key_white_18dp"
+        android:background="@color/button_color"
+        android:textColor="@color/button_text_color"
+        android:layout_marginTop="10dp"/>
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -49,6 +61,9 @@ QR코드 발급
         android:text="공유하기"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_share_white_16pt"
+        android:background="@color/button_color"
+        android:textColor="@color/button_text_color"
+        android:layout_marginTop="10dp"
         />
     <Button
         android:layout_width="300dp"
@@ -58,5 +73,9 @@ QR코드 발급
         android:layout_gravity="center"
         android:onClick="onClick"
         android:drawableLeft="@drawable/ic_location_on_white_18dp"
+        android:background="@color/button_color"
+        android:textColor="@color/button_text_color"
+        android:layout_marginTop="10dp"
         />
+</LinearLayout>
 </LinearLayout>

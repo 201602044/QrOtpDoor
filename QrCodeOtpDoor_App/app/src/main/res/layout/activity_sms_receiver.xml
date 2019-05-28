@@ -45,7 +45,8 @@
             android:layout_gravity="center"
             android:id="@+id/sms_receive_button"
             android:onClick="onClick"
-            android:background="@color/button_color"/>
+            android:background="@color/button_color"
+            android:textColor="@color/button_text_color"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,7 +100,9 @@
         android:onClick="onClick"
         android:background="@color/button_color"
         android:layout_marginTop="15dp"
+
         android:layout_marginBottom="15dp"
+        android:textColor="@color/button_text_color"
         />
         <Button
             android:layout_width="match_parent"
@@ -110,6 +113,7 @@
             android:onClick="onClick"
             android:background="@color/button_color"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/button_text_color"/>
 </LinearLayout>
 </FrameLayout>

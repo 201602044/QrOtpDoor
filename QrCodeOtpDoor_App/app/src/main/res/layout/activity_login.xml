@@ -55,7 +55,8 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="자동로그인"/>
+             android:text="자동로그인"
+             android:textStyle="bold"/>
          <!--위에 자료에 관해서 Linearlayout으로 묶은 다음에, onClick="onClcick 으로 가능하고 클릭 가능하게 만들어 둬야한다. -->
          <View
              android:layout_width="0dp"
@@ -66,7 +67,8 @@
              android:layout_height="wrap_content"
              android:text="회원가입"
              android:id="@+id/login_to_signup"
-             android:onClick="onClick"/>
+             android:onClick="onClick"
+             android:textStyle="bold"/>
       </LinearLayout>
 
       <Button
@@ -75,7 +77,8 @@
           android:text="Sign In"
           android:id="@+id/login_to_main"
           android:onClick="onClick"
-          android:background="@color/button_color"/>
+          android:background="@color/button_color"
+          android:textColor="@color/button_text_color"/>
    </LinearLayout>
 
 </LinearLayout>

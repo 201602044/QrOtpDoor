@@ -108,20 +108,21 @@ public String compareKey(String...strings) {
 			pstmt.setString(1, doorUserRelation_VO.getDoor_id());
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
+				//등록된 도어락이 있을경우
 				int tryNum=(rs.getInt("door_tryNum")+1);
-				//잘못된 QR코드를 인식했을때 경고 횟수를 추가한다. 3회이상이면 경고 누적 
+				//잘못된 QR코드를 인식했을때 경고 횟수를 추가한다. 3회이상이면 경고 누적 				
+				pstmt = conn.prepareStatement("update door set door_tryNum=door_tryNum+1 where door_id=? ");
+				pstmt.setString(1, doorUserRelation_VO.getDoor_id());
+				pstmt.executeUpdate();
+				//시도횟수 증가 
 				if(tryNum>=3) {
 					messageDAO.pushMsg(getDoorUserId(doorUserRelation_VO.getDoor_id()),"Warning",format.format(date)+"에 "+tryNum+"회이상 잘못된 접근이 발생했습니다");
 					//경고메세지를 보내줘야함 
 					return temp;
 				}
-				pstmt = conn.prepareStatement("update door set door_tryNum=door_tryNum+1 where door_id=? ");
-				pstmt.setString(1, doorUserRelation_VO.getDoor_id());
-				pstmt.executeUpdate();
-				//키가 그대로 있으면 삭제한다.
 			}
 			else throw new NotFoundedInfoException();
-			
+			//등록된 도어락이 없을 경ㅇ ㅜ
 				
 		}
 		
@@ -181,7 +182,7 @@ public List<String> getDoorUserId(String...strings) {
 	// TODO Auto-generated method stub
 	//"select user_id from dooruserrelation where door_id =? "
 	//도어락 id에 등록된 사용자들을 불러온다.
-	//warning클래스에서 받아서 List<String>형태로 반환을 해주는 형태ㅗ 만들어야한다 .
+	// List<String>형태로 반환을 해주는 형태ㅗ 만들어야한다 .
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs = null;

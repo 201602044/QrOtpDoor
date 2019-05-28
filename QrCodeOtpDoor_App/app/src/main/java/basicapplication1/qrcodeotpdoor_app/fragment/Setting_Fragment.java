@@ -211,7 +211,6 @@ public class Setting_Fragment   extends Fragment {
         menu.add(0,1,0,"Yes");
 
         menu.add(0,2,0,"No");
-
     }
 
     @Override

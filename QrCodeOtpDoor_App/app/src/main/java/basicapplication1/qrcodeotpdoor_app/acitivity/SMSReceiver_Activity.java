@@ -66,7 +66,8 @@ public class SMSReceiver_Activity extends Activity {
 
         try {
             //전송
-            checkNumber=r.nextInt(1001)+1000;
+            checkNumber=r.nextInt(8999)+1000;
+            //4자리수 입력문자.
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(editTexts[0].getText().toString(), null, checkNumber+"", null, null);
             Toast.makeText(getApplicationContext(), "전송 완료!", Toast.LENGTH_LONG).show();
@@ -120,7 +121,7 @@ public class SMSReceiver_Activity extends Activity {
                 timer_text.setText(String.format("%02d",timer_sec/60)+":"+String.format("%02d",timer_sec%60)+"초");
                 //텍스트쓰레드
                 if(timer_sec==0) {
-                    checkNumber=-1831821;
+                    checkNumber=Integer.MIN_VALUE;
                     timer.cancel();
                 }
 

@@ -1,14 +1,20 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
-    <!--<item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>-->
     <!--윗색 #2ED7D2, -->
+    <!--darkactionbar이용시 Title Text가 검은색으로 변함-->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="AppTheme.DialogWhenLarge" parent="@android:style/Theme.Holo.Light.DialogWhenLarge">
+        <item name="android:typeface">sans</item>
+    </style>
 </resources>

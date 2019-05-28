@@ -18,6 +18,7 @@
             android:textSize="25dp"
             android:text="Message List"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
 
             />
         <View

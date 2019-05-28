@@ -14,7 +14,7 @@
         android:textSize="25dp"
         android:text="Setting"
         android:layout_marginTop="10dp"
-
+        android:textStyle="bold"
         />
     <View
         android:layout_width="match_parent"
@@ -29,7 +29,10 @@
             android:drawableRight="@drawable/ic_expand_more_black_36dp"
             android:text="비밀번호 변경"
             android:textSize="25dp"
-            android:id="@+id/setting_click_change_passwd"/>
+            android:id="@+id/setting_click_change_passwd"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
     <!--밑에는 비밀번호변경에 대한뷰 필요 -->
     <LinearLayout
@@ -78,7 +81,8 @@
         android:id="@+id/setting_change_passwd"
         android:text="비밀번호 변경"
         android:background="@color/button_color"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="@color/button_text_color"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -93,7 +97,10 @@
             android:text="닉네임 변경"
             android:textSize="25dp"
             android:drawableRight="@drawable/ic_expand_more_black_36dp"
-            android:id="@+id/setting_click_change_info"/>
+            android:id="@+id/setting_click_change_info"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -137,7 +144,8 @@
         android:id="@+id/setting_change_user_info"
         android:background="@color/button_color"
         android:text="유저 정보 변경"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="@color/button_text_color"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -152,7 +160,11 @@
             android:text="회원탈퇴"
             android:textSize="25dp"
             android:id="@+id/setting_click_delete_info"
-            android:drawableRight="@drawable/ic_expand_more_black_36dp"/>
+            android:drawableRight="@drawable/ic_expand_more_black_36dp"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
 
     <LinearLayout
         android:layout_width="300dp"
@@ -169,6 +181,7 @@
         android:text="회원탈퇴"
         android:background="@color/button_color"
         android:drawableLeft="@drawable/ic_delete_white_18dp"
+        android:textColor="@color/button_text_color"
         android:drawablePadding="10dp"/>
 
     </LinearLayout>

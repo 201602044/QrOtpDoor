@@ -54,10 +54,11 @@ public class Login_Activity extends AppCompatActivity {
             editor.clear();
             editor.commit();
             return;
+        }else{
+            loadAutoLogin();
         }
         //로그아웃으로 들어온 거라면 저장된 사용자 정보를 삭제한다.
 
-        loadAutoLogin();
 
 
     }

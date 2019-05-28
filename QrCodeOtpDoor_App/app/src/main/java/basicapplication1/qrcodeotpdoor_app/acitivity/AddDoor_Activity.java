@@ -39,6 +39,7 @@ public class AddDoor_Activity  extends AppCompatActivity {
         switch (v.getId()){
             case R.id.adddoor_submit_button:
                 addDoorUser();
+                break;
             case  R.id.adddoor_scanner_button:
                 try {
 

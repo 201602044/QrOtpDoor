@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/background_color"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="도어락 등록"
+        android:textSize="20dp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="15dp"
+        android:textStyle="bold"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:gravity="center"
-    android:background="@color/background_color"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:gravity="center|top">
+
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="8"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+    >
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +49,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/adddoor_id"
-        android:background="@color/edittext_color"/>
+        android:background="@color/edittext_color"
+        android:layout_marginBottom="15dp"
+        android:hint="Input Door ID"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +61,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/adddoor_name"
         android:background="@color/edittext_color"
+        android:hint="Input Door Name"
         />
     <Button
         android:layout_width="match_parent"
@@ -39,7 +71,8 @@
         android:text="QR코드로 스캔"
         android:background="@color/button_color"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/button_text_color"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +80,8 @@
         android:onClick="onClick"
         android:text="도어락 추가"
         android:background="@color/button_color"
+        android:textColor="@color/button_text_color"
         />
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>

@@ -209,7 +209,7 @@ public class Management_Activity  extends AppCompatActivity {
 
     public void timeStart() {
         if(timer!=null)timer.cancel();
-        timer_text = (TextView) findViewById(R.id.management_timer);
+//        timer_text = (TextView) findViewById(R.id.management_timer);
         progressBar=(ProgressBar) findViewById(R.id.management_progressbar);
         progressBar.setProgress(60);
         timer_sec = 60;

@@ -4,8 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center|top"
     android:background="@color/background_color">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QR코드 공유"
+        android:textSize="20dp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -14,7 +33,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:id="@+id/shareduser_name"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:background="@color/edittext_color"
         android:drawableLeft="@drawable/ic_account_circle_white_18pt"
         android:drawablePadding="10dp"
@@ -29,7 +48,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/shareduser_phonenumeber"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_local_phone_white_18pt"
         android:background="@color/edittext_color"
         android:drawablePadding="10dp"
@@ -42,6 +61,7 @@
         android:id="@+id/shareuser_submit"
         android:onClick="onClick"
         android:text="공유하기"
-        android:background="@color/button_color"/>
+        android:background="@color/button_color"
+        android:textColor="@color/button_text_color"/>
 
 </LinearLayout>
