@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,7 +49,6 @@ public class Location_Activity   extends AppCompatActivity implements OnMapReady
             Door_VO door_vo=new Door_VO();
             door_vo.setDoor_id(door_id);
             String json=gson.toJson(door_vo);
-            Toast.makeText(getApplicationContext(),door_id,Toast.LENGTH_LONG).show();
             String[] params={"getDoorLocation",json};
             String result=okHttp.execute(params).get();
             okHttp.cancel(true);

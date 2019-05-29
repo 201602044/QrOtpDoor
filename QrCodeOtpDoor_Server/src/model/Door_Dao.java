@@ -44,6 +44,9 @@ public class Door_Dao  extends ConnectionDB{
 		ResultSet rs = null;
 		try{
 			conn=getConnection();
+			pstmt = conn.prepareStatement("delete from dooruserrelation where door_id=?");
+			pstmt.setString(1, strings[0]);
+			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement("delete from door where door_id=?");
 			pstmt.setString(1, strings[0]);
 			pstmt.executeUpdate();

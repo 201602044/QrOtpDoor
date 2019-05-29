@@ -32,7 +32,7 @@ import java.util.TimerTask;
 import basicapplication1.qrcodeotpdoor_app.R;
 import basicapplication1.qrcodeotpdoor_app.component.asynctask.OkHttp;
 import basicapplication1.qrcodeotpdoor_app.component.item.DoorUserRelation_VO;
-import basicapplication1.qrcodeotpdoor_app.exception.NotSavedQrCodeException;
+import basicapplication1.qrcodeotpdoor_app.component.exception.NotSavedQrCodeException;
 
 /**
  * Created by LeeSeungJae_201602044  on 2019-05-14.

@@ -89,7 +89,7 @@ public class SMSReceiver_Activity extends Activity {
     }
 
     private void checkNum() {
-        if(checkNumber!=Integer.parseInt(editTexts[1].getText().toString())){
+        if(checkNumber!=Integer.parseInt(editTexts[1].getText().toString())||checkNumber==Integer.MIN_VALUE){
             Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다",Toast.LENGTH_LONG).show();
             return;
         }
